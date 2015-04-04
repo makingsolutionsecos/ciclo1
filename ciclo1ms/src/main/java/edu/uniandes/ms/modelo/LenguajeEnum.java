@@ -1,4 +1,4 @@
-package modelo;
+package edu.uniandes.ms.modelo;
 
 /*
  * To change this license header, choose License Headers in Project Properties.

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package controlador;
+package edu.uniandes.ms.controlador;
 
-import dto.RespuestaAnalisis;
-import modelo.Analizador;
-import modelo.LenguajeEnum;
+import edu.uniandes.ms.dto.RespuestaAnalisis;
+import edu.uniandes.ms.modelo.Analizador;
+import edu.uniandes.ms.modelo.LenguajeEnum;
 
 /**
  * Clase Controlador que llama a el analizador y ejecuta el analisis de un directorio
