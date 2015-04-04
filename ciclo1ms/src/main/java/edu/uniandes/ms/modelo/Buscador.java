@@ -1,4 +1,4 @@
-package modelo;
+package edu.uniandes.ms.modelo;
 
 import java.io.File;
 import java.util.LinkedList;
