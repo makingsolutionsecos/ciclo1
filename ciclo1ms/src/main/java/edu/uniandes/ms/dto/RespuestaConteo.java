@@ -27,7 +27,7 @@ public class RespuestaConteo {
      * Inicializa la lista de clases
      */
     public RespuestaConteo() {
-        this.listaClases = new ArrayList<dto.Clase>();
+        this.listaClases = new ArrayList<Clase>();
     }
     
     /**
@@ -42,7 +42,7 @@ public class RespuestaConteo {
      * Establece la lista de clases del proyecto
      * @param listaClases Lista de clases a agregar 
      */
-    public void setListaClases(List<dto.Clase> listaClases) {
+    public void setListaClases(List<Clase> listaClases) {
         this.listaClases = listaClases;
     }
 
