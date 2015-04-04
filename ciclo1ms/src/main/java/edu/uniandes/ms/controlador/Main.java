@@ -11,14 +11,14 @@ import edu.uniandes.ms.vista.VistaTexto;
 
 /**
  * Clase principal
- * @author Angela Edith Suárez Torres
+ * @author Angela Edith Súarez Torres
  * @version 1.0
  * fecha 04/04/15
  */
 public class Main {
 
     /**
-     * Método principal que inicia llamado a analizador
+     * Método principa que inicia llamado a analizador
      * @param args the command line arguments
      */
     public static void main(String[] args) {
