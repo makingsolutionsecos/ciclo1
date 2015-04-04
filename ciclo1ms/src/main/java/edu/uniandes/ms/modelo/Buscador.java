@@ -4,7 +4,7 @@ import java.io.File;
 import java.util.LinkedList;
 
 /**
- * Clase encargada de buscar los archivos  en un directorio con una extensiÃ³n especÃ­fica.
+ * Clase encargada de buscar los archivos  en un directorio con una extensión específica.
  * @author Johans Gonzalez
  * Fecha 1/04/2015
  * @version 1.0
@@ -12,8 +12,8 @@ import java.util.LinkedList;
 public class Buscador {
     
     /**
-     * MÃ©todo encargado de retornar  el listado de archivos de un directorio.
-     * @param path String Variable que contiene la ubicaciÃ³n del directorio a examinar.
+     * Método encargado de retornar  el listado de archivos de un directorio.
+     * @param path String Variable que contiene la ubicación del directorio a examinar.
      * @return Retorna listado de archivos de un directorio.
      */    
     public LinkedList<File> getArchivos(String path) {
@@ -22,8 +22,8 @@ public class Buscador {
     }
     
     /**
-     * MÃ©todo encargado de buscar los archivos de una extensiÃ³n especifica  en un directorio.
-     * @param dir File Variable que contiene el directorio en el cual se desarrollara la bÃºsqueda.
+     * Método encargado de buscar los archivos de una extensión especifica  en un directorio.
+     * @param dir File Variable que contiene el directorio en el cual se desarrollara la búsqueda.
      * @return Retorna listado de archivos de un directorio.
      */    
     private LinkedList<File> getArchivosDirectorio(File dir) {

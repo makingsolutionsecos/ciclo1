@@ -7,7 +7,7 @@ import java.io.File;
 import java.util.LinkedList;
 
 /**
- * Clase encargada de generar un anÃ¡lisis por cada archivo de un directorio y extensiÃ³n definido.
+ * Clase encargada de generar un análisis por cada archivo de un directorio y extensión definido.
  * @author Johans Gonzalez
  * Fecha 1/04/2015
  * @version 1.0
@@ -16,10 +16,10 @@ import java.util.LinkedList;
 public class Analizador {
     
     /**
-     * MÃ©todo encargado de retornar un objeto con el anÃ¡lisis desarrollado.
-     * @param ruta String Variable que contiene la ubicaciÃ³n del directorio a examinar.
-     * @param lenguaje LenguajeEnum Objeto que contiene el lenguaje que determina la extensiÃ³n y lineamientos para desarrollar el anÃ¡lisis.
-     * @return un objeto de tipo RespuestaAnalisis con el anÃ¡lisis desarrollado.
+     * Método encargado de retornar un objeto con el análisis desarrollado.
+     * @param ruta String Variable que contiene la ubicación del directorio a examinar.
+     * @param lenguaje LenguajeEnum Objeto que contiene el lenguaje que determina la extensión y lineamientos para desarrollar el análisis.
+     * @return un objeto de tipo RespuestaAnalisis con el anñalisis desarrollado.
      */
     public RespuestaAnalisis analizarDirectorioFuente(String ruta, LenguajeEnum lenguaje) {
         RespuestaAnalisis respuestaAnalisis = new RespuestaAnalisis();
