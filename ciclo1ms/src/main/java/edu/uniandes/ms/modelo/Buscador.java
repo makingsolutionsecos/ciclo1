@@ -6,6 +6,7 @@ import java.util.LinkedList;
 /**
  * Clase encargada de buscar los archivos  en un directorio con una extensión específica.
  * @author Johans Gonzalez
+ * Fecha 1/04/2015
  * @version 1.0
  */
 public class Buscador {
