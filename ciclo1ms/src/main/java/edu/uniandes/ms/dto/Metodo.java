@@ -6,7 +6,7 @@ package edu.uniandes.ms.dto;
  * contiene toda la información de un metodo de una clase.
  * @author sergio Forero
  * @version 1.0
- * Fecha 01/04/2015
+ * Fecha 04/04/2015
  */
 public class Metodo {
     

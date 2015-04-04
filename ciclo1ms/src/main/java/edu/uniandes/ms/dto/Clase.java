@@ -9,7 +9,7 @@ import java.util.List;
  * y contendra el nombre, cantidad de lineas e información de los metodos de la clase
  * @author sergio Forero
  * @version 1.0
- * Fecha 01/04/2015
+ * Fecha 03/04/2015
  */
 public class Clase {
 
