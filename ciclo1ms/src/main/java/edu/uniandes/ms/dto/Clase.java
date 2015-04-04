@@ -1,5 +1,5 @@
 
-package dto;
+package edu.uniandes.ms.dto;
 
 import java.util.ArrayList;
 import java.util.List;

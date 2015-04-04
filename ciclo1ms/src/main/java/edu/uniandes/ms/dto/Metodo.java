@@ -1,5 +1,5 @@
 
-package dto;
+package edu.uniandes.ms.dto;
 
 /**
  * Clase DTO que contiene la estructura de un archivo metodo
