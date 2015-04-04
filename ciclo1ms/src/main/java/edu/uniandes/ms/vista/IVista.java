@@ -8,6 +8,7 @@ import edu.uniandes.ms.dto.RespuestaAnalisis;
  *
  * @author John Dany osorio Ramos
  * @version 1.0
+ * Fecha: 04/04/2015 
  */
 public interface IVista {
 
