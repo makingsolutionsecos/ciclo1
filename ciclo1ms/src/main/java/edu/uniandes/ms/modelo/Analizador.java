@@ -1,8 +1,8 @@
 
-package modelo;
+package edu.uniandes.ms.modelo;
 
-import dto.RespuestaAnalisis;
-import dto.RespuestaConteo;
+import edu.uniandes.ms.dto.RespuestaAnalisis;
+import edu.uniandes.ms.dto.RespuestaConteo;
 import java.io.File;
 import java.util.LinkedList;
 
