@@ -9,7 +9,7 @@ import java.util.LinkedList;
 /**
  * Clase encargada de generar un análisis por cada archivo de un directorio y extensión definido.
  * @author Johans Gonzalez
- * Fecha 1/04/2015
+ * Fecha 3/04/2015
  * @version 1.0
  */
 
