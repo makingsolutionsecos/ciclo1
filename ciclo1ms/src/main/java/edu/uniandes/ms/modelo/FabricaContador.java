@@ -29,9 +29,9 @@ public class FabricaContador {
             case JAVA:
                 contador = new ContadorJava();
                 break;
-            case CSHARP:
-                contador = new ContadorCSharp();
-                break;
+           // case CSHARP:
+                //contador = new ContadorCSharp();
+               // break;
             default:
                 contador = new ContadorJava();
                 break;
