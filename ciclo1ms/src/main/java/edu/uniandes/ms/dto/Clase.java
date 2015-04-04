@@ -6,7 +6,7 @@ import java.util.List;
 
 /**
  * Clase DTO que contiene la estructura de un archivo clase
- * y contendra el nombre, cantidad de lineas e informaciÃ³n de los metodos de la clase
+ * y contendra el nombre, cantidad de lineas e información de los metodos de la clase
  * @author sergio Forero
  * @version 1.0
  * Fecha 01/04/2015

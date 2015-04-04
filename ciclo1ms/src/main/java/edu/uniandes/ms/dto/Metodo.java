@@ -3,7 +3,7 @@ package edu.uniandes.ms.dto;
 
 /**
  * Clase DTO que contiene la estructura de un archivo metodo
- * contiene toda la informaciÃ³n de un metodo de una clase.
+ * contiene toda la información de un metodo de una clase.
  * @author sergio Forero
  * @version 1.0
  * Fecha 01/04/2015
