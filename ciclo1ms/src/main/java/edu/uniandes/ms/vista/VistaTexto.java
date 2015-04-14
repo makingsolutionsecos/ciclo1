@@ -6,6 +6,7 @@ import edu.uniandes.ms.dto.Metodo;
 import edu.uniandes.ms.dto.RespuestaAnalisis;
 import edu.uniandes.ms.dto.RespuestaConteo;
 import edu.uniandes.ms.modelo.LenguajeEnum;
+import java.io.File;
 import java.util.List;
 
 /**
@@ -21,7 +22,7 @@ public class VistaTexto implements IVista {
 
     /**
      * Método que analiza el código fuente de un lenguaje en específico y se
-     * optiene su respectivo análisis.
+     * obtiene su respectivo análisis.
      *
      */
     @Override
@@ -29,10 +30,12 @@ public class VistaTexto implements IVista {
 
         // Para el ciclo 1 el lenguaje y la ruta del código fuente se van a dejar quemados.
         LenguajeEnum lenguaje = LenguajeEnum.JAVA;
-        String ruta = "/Users/camilomarroquin/NetBeansProjects/TSP.Model";
+        File directorio = new File(System.getProperty("user.dir") + File.separator + 
+                "target" + File.separator + "classes" +
+                File.separator + "src");
 
         Controlador controlador = new Controlador();
-        pintar(controlador.analizarDirectorioFuente(ruta, lenguaje));
+        pintar(controlador.analizarDirectorioFuente(directorio.getPath(), lenguaje));
     }
 
     /**
@@ -53,14 +56,14 @@ public class VistaTexto implements IVista {
 
         for (Clase clase : clases) {
             System.out.println("\tNombre de la clase: " + clase.getNombre());
-            System.out.println("\tCantidad lineas de la clase: " + clase.getCantidadLineasClase());
+            System.out.println("\tCantidad líneas de la clase: " + clase.getCantidadLineasClase());
             System.out.println("");
             List<Metodo> metodos = clase.getListaMetodos();
             System.out.println("\t\tResumen de métodos: ");
 
             for (Metodo metodo : metodos) {
-                System.out.println("\t\tNombre del metodo: " + metodo.getNombre());
-                System.out.println("\t\tCantidad lineas del método: " + metodo.getCantidadLineasMetodo());
+                System.out.println("\t\tNombre del método: " + metodo.getNombre());
+                System.out.println("\t\tCantidad líneas del método: " + metodo.getCantidadLineasMetodo());
             }
             System.out.println("");
         }
