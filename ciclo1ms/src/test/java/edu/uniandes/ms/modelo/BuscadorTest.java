@@ -32,23 +32,16 @@ public class BuscadorTest extends TestCase {
      */
     public void testGetArchivos() {
                 
-        File directorio = new File (".");            
-        String ruta = "";
-        try {
-            ruta = directorio.getCanonicalPath();                                   
-        } catch (IOException ex) {            
-            fail("No se puede establecer la ruta actual del directorio.");
-        }
-                
-        if(ruta.indexOf("ciclo1ms") != -1){                      
+        LenguajeEnum lenguaje = LenguajeEnum.JAVA;
+        File directorio = new File(System.getProperty("user.dir") + File.separator + 
+                "target" + File.separator + "classes" +
+                File.separator + "src");
+
             Buscador buscador = new Buscador();
-            LinkedList<File> archivos = buscador.getArchivos(ruta);            
+            LinkedList<File> archivos = buscador.getArchivos(directorio.getPath());            
             assertNotNull("No se están detectando los archivos en el directorio.",archivos);                                                  
-            assertEquals("No se está detectando la totalidad de los archivos de un directorio.", 15, archivos.size());
-        }
-        else{
-            fail("No se puede establecer la ruta actual del directorio.");
-        }
+            assertEquals("No se está detectando la totalidad de los archivos de un directorio.", 14, archivos.size());
+        
         
     }
         
