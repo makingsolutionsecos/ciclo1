@@ -48,7 +48,7 @@ public class VistaTexto implements IVista {
     @Override
     public void pintar(RespuestaAnalisis respuestaAnalisis) {
 
-        System.out.println("Proyecto: TSP.Model");
+        System.out.println("Proyecto: Ciclo #1 TSP");
         RespuestaConteo respuestaConteo = respuestaAnalisis.getRespuestaConteo();
         List<Clase> clases = respuestaConteo.getListaClases();
         System.out.println("Número de clases: " + respuestaConteo.getNumeroClases());
