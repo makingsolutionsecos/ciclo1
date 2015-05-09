@@ -26,7 +26,7 @@ public class Analizador {
 
         //Buscar Archivos
         Buscador buscador = new Buscador();
-        LinkedList<File> archivos = buscador.getArchivos(ruta);
+        LinkedList<File> archivos = buscador.getArchivos(ruta, lenguaje);
         RespuestaConteo respuesta = new RespuestaConteo();
 
         //Conteo

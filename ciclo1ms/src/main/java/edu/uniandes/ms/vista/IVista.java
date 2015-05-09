@@ -1,6 +1,7 @@
 package edu.uniandes.ms.vista;
 
 import edu.uniandes.ms.dto.RespuestaAnalisis;
+import edu.uniandes.ms.modelo.LenguajeEnum;
 
 /**
  * Interfaz que contiente las definiciones de un grupo de funciones relacionadas
@@ -15,8 +16,9 @@ public interface IVista {
     /**
      * Define el método que analiza el código fuente de un lenguaje en
      * específico y se optiene su respectivo análisis.
+     * @param lenguaje a analizar.
      */
-    public void analizarDirectorioFuente();
+    public void analizarDirectorioFuente(LenguajeEnum lenguaje);
 
     /**
      * Define el método encargado de pintar la respuesta del análisis del código

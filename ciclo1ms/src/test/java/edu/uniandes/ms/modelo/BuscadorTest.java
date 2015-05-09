@@ -38,7 +38,7 @@ public class BuscadorTest extends TestCase {
                 File.separator + "src");
 
             Buscador buscador = new Buscador();
-            LinkedList<File> archivos = buscador.getArchivos(directorio.getPath());            
+            LinkedList<File> archivos = buscador.getArchivos(directorio.getPath(), lenguaje);            
             assertNotNull("No se están detectando los archivos en el directorio.",archivos);                                                  
             assertEquals("No se está detectando la totalidad de los archivos de un directorio.", 14, archivos.size());
         

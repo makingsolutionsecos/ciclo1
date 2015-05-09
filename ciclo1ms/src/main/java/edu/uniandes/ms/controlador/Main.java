@@ -1,6 +1,7 @@
 package edu.uniandes.ms.controlador;
 
 
+import edu.uniandes.ms.modelo.LenguajeEnum;
 import edu.uniandes.ms.vista.VistaTexto;
 
 /*
@@ -23,7 +24,7 @@ public class Main {
      */
     public static void main(String[] args) {
             VistaTexto vistaTexto = new VistaTexto();
-            vistaTexto.analizarDirectorioFuente();
+            vistaTexto.analizarDirectorioFuente(LenguajeEnum.JAVA);
     }
 
 }

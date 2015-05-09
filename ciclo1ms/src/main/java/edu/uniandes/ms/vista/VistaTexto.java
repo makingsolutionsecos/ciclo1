@@ -26,10 +26,9 @@ public class VistaTexto implements IVista {
      *
      */
     @Override
-    public void analizarDirectorioFuente() {
+    public void analizarDirectorioFuente(LenguajeEnum lenguaje) {
 
-        // Para el ciclo 1 el lenguaje y la ruta del código fuente se van a dejar quemados.
-        LenguajeEnum lenguaje = LenguajeEnum.JAVA;
+        // Para el ciclo 1 el lenguaje y la ruta del código fuente se van a dejar quemados.       
         File directorio = new File(System.getProperty("user.dir") + File.separator + 
                 "target" + File.separator + "classes" +
                 File.separator + "src");
