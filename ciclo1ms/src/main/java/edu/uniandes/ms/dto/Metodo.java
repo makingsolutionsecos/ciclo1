@@ -29,6 +29,11 @@ public class Metodo {
      * cantidad de puntos de desicion que tiene el metodo
      */
     private int cantidadPuntosDecision;
+    
+    /**
+     * complejidad ciclomática del metodo
+     */
+    private int complejidadMcCabe;
 
     /**
      * constructor de la clase metodo
@@ -99,5 +104,21 @@ public class Metodo {
      */
     public void setCantidadPuntosDecision(int cantidadPuntosDecision) {
         this.cantidadPuntosDecision = cantidadPuntosDecision;
+    }
+    
+    /**
+     * obtiene la complejidad de McCabe que es una metrica que proporciona una medicion de complejidad logica del metodo
+     * @return int complejidad de McCabe del metodo.
+     */
+    public int getComplejidadMcCabe() {
+        return this.complejidadMcCabe;
+    }
+    
+    /**
+     * metodo encargado de asignar la complejidad de McCabe obtenida.
+     * @param complejidadMcCabe valor a establecer.
+     */
+    public void setComplejidadMcCabe(int complejidadMcCabe){
+        this.complejidadMcCabe = complejidadMcCabe;
     }
 }

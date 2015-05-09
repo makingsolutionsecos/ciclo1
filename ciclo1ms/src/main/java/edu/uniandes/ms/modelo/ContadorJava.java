@@ -11,6 +11,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /*
  * To change this license header, choose License Headers in Project Properties.
@@ -57,14 +59,16 @@ public class ContadorJava implements IContador {
                     metodo = new Metodo();
                     metodo.setNombre(getNombreMetodo(s.trim()));
                     clase.setCantidadLineasClase(clase.getCantidadLineasClase() + 1);
-                    metodo.setCantidadLineasMetodo(metodo.getCantidadLineasMetodo() + 1);
+                    metodo.setCantidadLineasMetodo(metodo.getCantidadLineasMetodo() + 1);                    
+                    metodo.setComplejidadMcCabe(metodo.getComplejidadMcCabe() + 1);
 
                 } else if (isCodeLine(s)) {
                     if (clase != null) {
                         clase.setCantidadLineasClase(clase.getCantidadLineasClase() + 1);
                     }
                     if (metodo != null) {
-                        metodo.setCantidadLineasMetodo(metodo.getCantidadLineasMetodo() + 1);
+                        metodo.setCantidadLineasMetodo(metodo.getCantidadLineasMetodo() + 1);                        
+                        metodo.setComplejidadMcCabe(metodo.getComplejidadMcCabe() + valueExpressionMcCabe(s));
                     }
                 }
             }
@@ -125,5 +129,62 @@ public class ContadorJava implements IContador {
         linea = linea.substring(linea.lastIndexOf(" ")+1, linea.length());
         return linea;
     }
+    
+    private int valueExpressionMcCabe(String linea){
+        int vExpressionMcCabe = 0;
+        String lineaCodigo = linea.replaceAll(" ","");
+        Pattern pattern = Pattern.compile("^if\\(.*\\)\\{$");
+        Matcher matcher = pattern.matcher(lineaCodigo);
+        if (matcher.matches()){
+            vExpressionMcCabe++;
+            String[] numeroCondiciones = lineaCodigo.split("&&");
+            vExpressionMcCabe = (numeroCondiciones.length - 1) + vExpressionMcCabe;
+            numeroCondiciones = lineaCodigo.split("||");
+            vExpressionMcCabe = (numeroCondiciones.length - 1) + vExpressionMcCabe;
+        }
+        
+        pattern = Pattern.compile("^elseif\\(.*\\)\\{$");
+        matcher = pattern.matcher(lineaCodigo);
+        if (matcher.matches()){
+            vExpressionMcCabe++;
+            String[] numeroCondiciones = lineaCodigo.split("&&");
+            vExpressionMcCabe = (numeroCondiciones.length - 1) + vExpressionMcCabe;
+            numeroCondiciones = lineaCodigo.split("||");
+            vExpressionMcCabe = (numeroCondiciones.length - 1) + vExpressionMcCabe;
+        }        
+        
+        pattern = Pattern.compile("^case.*:$");
+        matcher = pattern.matcher(lineaCodigo);
+        if (matcher.matches()) {
+            vExpressionMcCabe++;
+        }
+        
+        pattern = Pattern.compile("^for\\(.*\\)\\{$"); 
+        matcher = pattern.matcher(lineaCodigo);
+        if (matcher.matches()) {
+            vExpressionMcCabe++;
+        }
+        
+        pattern = Pattern.compile("^foreach\\(.*\\)\\{$"); 
+        matcher = pattern.matcher(lineaCodigo);
+        if (matcher.matches()) {
+            vExpressionMcCabe++;
+        }
+        
+        pattern = Pattern.compile("^while\\(.*\\)\\{$"); 
+        matcher = pattern.matcher(lineaCodigo);
+        if (matcher.matches()) {
+            vExpressionMcCabe++;
+        }
+        
+        pattern = Pattern.compile("^catch\\(.*\\)\\{$"); 
+        matcher = pattern.matcher(lineaCodigo);
+        if (matcher.matches()) {
+            vExpressionMcCabe++;
+        }
+               
+        return vExpressionMcCabe;
+    }
+    
     
 }
