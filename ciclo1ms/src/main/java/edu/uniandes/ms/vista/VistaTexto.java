@@ -26,15 +26,15 @@ public class VistaTexto implements IVista {
      *
      */
     @Override
-    public void analizarDirectorioFuente(LenguajeEnum lenguaje) {
+    public String analizarDirectorioFuente(LenguajeEnum lenguaje) {
 
         // Para el ciclo 1 el lenguaje y la ruta del código fuente se van a dejar quemados.       
         File directorio = new File(System.getProperty("user.dir") + File.separator + 
                 "target" + File.separator + "classes" +
                 File.separator + "src");
 
-        Controlador controlador = new Controlador();
-        pintar(controlador.analizarDirectorioFuente(directorio.getPath(), lenguaje));
+        Controlador controlador = new Controlador();        
+        return pintar(controlador.analizarDirectorioFuente(directorio.getPath(), lenguaje));
     }
 
     /**
@@ -43,29 +43,43 @@ public class VistaTexto implements IVista {
      *
      * @param respuestaAnalisis Respuesta que contiene el análisis detallado del
      * código fuente analizado.
+     * @return Respuesta
      */
     @Override
-    public void pintar(RespuestaAnalisis respuestaAnalisis) {
-
+    public String pintar(RespuestaAnalisis respuestaAnalisis) {
+        String respuesta = "";
         System.out.println("Proyecto: Ciclo #1 TSP");
+        respuesta = "<b>Proyecto: Ciclo #1 TSP</b> <br/>";
         RespuestaConteo respuestaConteo = respuestaAnalisis.getRespuestaConteo();
         List<Clase> clases = respuestaConteo.getListaClases();
         System.out.println("Número de clases: " + respuestaConteo.getNumeroClases());
+        respuesta +="Número de clases: " + respuestaConteo.getNumeroClases()+"<br/>";
         System.out.println("Resumen de Clases ");
-
-        for (Clase clase : clases) {
+        respuesta +="<b>Resumen de Clases</b> <br/>";      
+        respuesta +="<ul>";
+        for (Clase clase : clases) {            
             System.out.println("\tNombre de la clase: " + clase.getNombre());
+            respuesta +="<li>Nombre de la clase: " + clase.getNombre()+"</li>";
             System.out.println("\tCantidad líneas de la clase: " + clase.getCantidadLineasClase());
+            respuesta +="<li>Cantidad líneas de la clase: " + clase.getCantidadLineasClase()+"</li>";
             System.out.println("");
             List<Metodo> metodos = clase.getListaMetodos();
             System.out.println("\t\tResumen de métodos: ");
-
+            respuesta +="<br/>";
+            respuesta +="<ul><b>Resumen de métodos:</b>";
             for (Metodo metodo : metodos) {
                 System.out.println("\t\tNombre del método: " + metodo.getNombre());
+                respuesta +="<li>Nombre del método: " + metodo.getNombre()+"</li>";
                 System.out.println("\t\tCantidad líneas del método: " + metodo.getCantidadLineasMetodo());
+                respuesta +="<li>Cantidad líneas del método: " + metodo.getCantidadLineasMetodo()+"</li>";
+                respuesta +="<br/>";
                 System.out.println("\t\tComplejidad ciclomática: " + metodo.getComplejidadMcCabe());
             }
+            respuesta +="</ul>";
             System.out.println("");
+            
         }
+        respuesta +="</ul>";
+        return respuesta;
     }
 }

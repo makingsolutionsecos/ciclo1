@@ -17,8 +17,9 @@ public interface IVista {
      * Define el método que analiza el código fuente de un lenguaje en
      * específico y se optiene su respectivo análisis.
      * @param lenguaje a analizar.
+     * @return 
      */
-    public void analizarDirectorioFuente(LenguajeEnum lenguaje);
+    public String analizarDirectorioFuente(LenguajeEnum lenguaje);
 
     /**
      * Define el método encargado de pintar la respuesta del análisis del código
@@ -26,6 +27,7 @@ public interface IVista {
      *
      * @param respuestaAnalisis Respuesta que contiene el análisis detallado del
      * código fuente analizado.
+     * @return 
      */
-    public void pintar(RespuestaAnalisis respuestaAnalisis);
+    public String pintar(RespuestaAnalisis respuestaAnalisis);
 }
