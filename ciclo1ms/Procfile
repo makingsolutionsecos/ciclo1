@@ -1,1 +1,2 @@
 web:    java -cp target/classes:target/dependency/* edu.uniandes.ms.controlador.Main
+web1:    java -cp target/classes;target/dependency/* edu.uniandes.ms.controlador.Main
