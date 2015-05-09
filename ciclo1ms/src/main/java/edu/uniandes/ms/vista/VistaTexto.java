@@ -72,8 +72,9 @@ public class VistaTexto implements IVista {
                 respuesta +="<li>Nombre del método: " + metodo.getNombre()+"</li>";
                 System.out.println("\t\tCantidad líneas del método: " + metodo.getCantidadLineasMetodo());
                 respuesta +="<li>Cantidad líneas del método: " + metodo.getCantidadLineasMetodo()+"</li>";
-                respuesta +="<br/>";
                 System.out.println("\t\tComplejidad ciclomática: " + metodo.getComplejidadMcCabe());
+                respuesta +="<li>Complejidad ciclomática: " + metodo.getComplejidadMcCabe()+"</li>";
+                respuesta +="<br/>";
             }
             respuesta +="</ul>";
             System.out.println("");

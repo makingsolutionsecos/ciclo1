@@ -34,8 +34,8 @@ public class Main extends HttpServlet {
      */
     public static void main(String[] args) {
         try {
-            Server server = new Server(Integer.valueOf(System.getenv("PORT")));
-//            Server server = new Server(Integer.valueOf("8080"));
+//            Server server = new Server(Integer.valueOf(System.getenv("PORT")));
+            Server server = new Server(Integer.valueOf("8080"));
             ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
             context.setContextPath("/");
             server.setHandler(context);
@@ -59,7 +59,16 @@ public class Main extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-
+        VistaTexto vistaTexto = new VistaTexto();
+        String respuesta = vistaTexto.analizarDirectorioFuente(LenguajeEnum.JAVA);
+        PrintWriter out = resp.getWriter();
+        out.print("<html>\n"
+                + "<body>\n"
+                + "<form>\n"
+                +respuesta +"\n"                
+                + "</form>\n"
+                + "</body>\n"
+                + "</html>");
     }
 
     /**
@@ -73,13 +82,11 @@ public class Main extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        VistaTexto vistaTexto = new VistaTexto();
-        String respuesta = vistaTexto.analizarDirectorioFuente(LenguajeEnum.JAVA);
         PrintWriter out = resp.getWriter();
         out.print("<html>\n"
                 + "<body>\n"
-                + "<form action=\"/Main\" method=\"POST\">\n"
-                +respuesta +"\n"
+                + "<form action=\"VistaWeb\" method=\"POST\">\n"
+                +"<input type='submit'/>"     
                 + "</form>\n"
                 + "</body>\n"
                 + "</html>");
@@ -87,6 +94,7 @@ public class Main extends HttpServlet {
 
     private void showHome(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
+        
     }
 
 }
