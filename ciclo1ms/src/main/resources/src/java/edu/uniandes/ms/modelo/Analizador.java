@@ -1,5 +1,5 @@
 
-package edu.uniandes.ms.modelo;
+package src.java.edu.uniandes.ms.modelo;
 
 import edu.uniandes.ms.dto.RespuestaAnalisis;
 import edu.uniandes.ms.dto.RespuestaConteo;
