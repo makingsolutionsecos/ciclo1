@@ -135,15 +135,15 @@ public class ContadorJava implements IContador {
         String lineaCodigo = linea.replaceAll(" ","");
         Pattern pattern = Pattern.compile("^if\\(.*\\)\\{$");
         Matcher matcher = pattern.matcher(lineaCodigo);
-        if (matcher.matches()){
+       /* if (matcher.matches()){
             vExpressionMcCabe++;
             String[] numeroCondiciones = lineaCodigo.split("&&");
             vExpressionMcCabe = (numeroCondiciones.length - 1) + vExpressionMcCabe;
             numeroCondiciones = lineaCodigo.split("||");
             vExpressionMcCabe = (numeroCondiciones.length - 1) + vExpressionMcCabe;
-        }
+        }*/
         
-        pattern = Pattern.compile("^elseif\\(.*\\)\\{$");
+        /*pattern = Pattern.compile("^elseif\\(.*\\)\\{$");
         matcher = pattern.matcher(lineaCodigo);
         if (matcher.matches()){
             vExpressionMcCabe++;
@@ -151,7 +151,7 @@ public class ContadorJava implements IContador {
             vExpressionMcCabe = (numeroCondiciones.length - 1) + vExpressionMcCabe;
             numeroCondiciones = lineaCodigo.split("||");
             vExpressionMcCabe = (numeroCondiciones.length - 1) + vExpressionMcCabe;
-        }        
+        } */       
         
         pattern = Pattern.compile("^case.*:$");
         matcher = pattern.matcher(lineaCodigo);
@@ -177,7 +177,7 @@ public class ContadorJava implements IContador {
             vExpressionMcCabe++;
         }
         
-        pattern = Pattern.compile("^catch\\(.*\\)\\{$"); 
+        pattern = Pattern.compile("^\\}catch\\(.*\\)\\{$"); 
         matcher = pattern.matcher(lineaCodigo);
         if (matcher.matches()) {
             vExpressionMcCabe++;

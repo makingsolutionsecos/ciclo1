@@ -54,6 +54,10 @@ public class VistaTexto implements IVista {
         List<Clase> clases = respuestaConteo.getListaClases();
         System.out.println("Número de clases: " + respuestaConteo.getNumeroClases());
         respuesta +="Número de clases: " + respuestaConteo.getNumeroClases()+"<br/>";
+        System.out.println("Número de líneas total: " + respuestaConteo.getCantidadLineasTotal());
+        respuesta +="Número de líneas total: " + respuestaConteo.getCantidadLineasTotal() + "<br/>";        
+        System.out.println("Complejidad ciclomática: " + respuestaConteo.getComplejidadMcCabeTotal());
+        respuesta +="Complejidad ciclomática: " + respuestaConteo.getComplejidadMcCabeTotal() + "<br/>";                
         System.out.println("Resumen de Clases ");
         respuesta +="<b>Resumen de Clases</b> <br/>";      
         respuesta +="<ul>";
