@@ -54,28 +54,8 @@ public class RespuestaConteo {
         return cantidadLineasTotal;
     }
     
-    public String getComplejidadMcCabeTotal(){
-        int complejidadMcCabeTotal = 0;
-        String respuestaComplejidad = "";
-        for (Clase clase : this.listaClases) { 
-            List<Metodo> metodos = clase.getListaMetodos();
-            for (Metodo metodo : metodos) {
-                complejidadMcCabeTotal += metodo.getComplejidadMcCabe();
-            }
-        }
-        respuestaComplejidad += complejidadMcCabeTotal;
-        if(complejidadMcCabeTotal < 10)
-            respuestaComplejidad += " Programa simple, sin mucho riesgo.";
-        else if(complejidadMcCabeTotal > 10 && complejidadMcCabeTotal < 20)
-            respuestaComplejidad += " Programa mediamente complejo, riesgo moderado.";
-        else if(complejidadMcCabeTotal > 20 && complejidadMcCabeTotal < 50)
-            respuestaComplejidad += " Programa complejo, alto riesgo.";
-        else
-            respuestaComplejidad += " Programa no testeable, riesgo muy alto.";
-        
-        return respuestaComplejidad;
-    }
-     
+ 
+    
     /**
      * Obtiene la lista de llamdos de los metodos
      * @return HashMap<String, Integer> Lista de llamados a los metodos
