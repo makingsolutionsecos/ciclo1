@@ -2,6 +2,7 @@ package edu.uniandes.ms.controlador;
 
 import edu.uniandes.ms.modelo.LenguajeEnum;
 import edu.uniandes.ms.vista.VistaTexto;
+import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.logging.Level;
@@ -59,16 +60,31 @@ public class Main extends HttpServlet {
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        VistaTexto vistaTexto = new VistaTexto();
-        String respuesta = vistaTexto.analizarDirectorioFuente(LenguajeEnum.JAVA);
+        String archUp = req.getParameter("archUp");
         PrintWriter out = resp.getWriter();
-        out.print("<html>\n"
-                + "<body>\n"
-                + "<form>\n"
-                +respuesta +"\n"                
-                + "</form>\n"
-                + "</body>\n"
-                + "</html>");
+        if (archUp != null) {
+            File directorio = new File(archUp);
+            String ruta = directorio.getAbsolutePath();
+            VistaTexto vistaTexto = new VistaTexto();
+            String respuesta = vistaTexto.analizarDirectorioFuente(LenguajeEnum.JAVA);
+            out.print("<html>\n"
+                    + "<body>\n"
+                    + "<form>\n"
+                    + "ruta -> " + ruta + "<br/>"
+                    + respuesta + "\n"
+                    + "</form>\n"
+                    + "</body>\n"
+                    + "</html>");
+        } else {
+            out.print("<html>\n"
+                    + "<body>\n"
+                    + "<form>\n"
+                    + "DEBE SELECCIONAR UN ARCHIVO .ZIP\n"
+                    + "</form>\n"
+                    + "</body>\n"
+                    + "</html>");
+        }
+
     }
 
     /**
@@ -83,18 +99,123 @@ public class Main extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
-        out.print("<html>\n"
-                + "<body>\n"
-                + "<form action=\"VistaWeb\" method=\"POST\">\n"
-                +"<input type='submit'/>"     
-                + "</form>\n"
-                + "</body>\n"
-                + "</html>");
+        out.print(cargarPaginaHtml());
+
     }
 
     private void showHome(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
-        
+
+    }
+
+    private String cargarPaginaHtml() {
+        String plantilla = "";
+
+        plantilla = "<html>\n"
+                + "    <head>\n"
+                + "        <title>TSPi MAKING SOLUTIONS</title>\n"
+                + "    </head>\n"
+                + "    <body bgcolor=\"#FBFBEF\">\n"
+                + "        <form action=\"VistaWeb\" method=\"post\">\n"
+                + "            <table border=\"1\" align=\"center\" bgcolor=\"#E0ECF8\" style=\"border: yellow 9px solid;\"> \n"
+                + "                <tr>\n"
+                + "                    <td>\n"
+                + "                        <h3>Making Solutions</h3>\n"
+                + "                    </td>\n"
+                + "                </tr>\n"
+                + "                <tr>\n"
+                + "                    <td>\n"
+                + "                        <p>Analizador de programas JAVA:</p>\n"
+                + "                        <p>Esta aplicación leera la ruta origen de un proyecto Java y lo analizara obteniendo el siguiente resultado</p>\n"
+                + "                    </td>\n"
+                + "                </tr>\n"
+                + "                <tr>\n"
+                + "                    <td>\n"
+                + "                        <ul>\n"
+                + "                            <li>Número de clases</li>\n"
+                + "                            <li>Número total de lineas del proyecto</li>\n"
+                + "                            <li>Complejidad ciclomatica</li>\n"
+                + "                            <li>Nombre de una clase</li>\n"
+                + "                            <li>LOC por clase</li>\n"
+                + "                            <li>Resúmen de métodos por clase</li>\n"
+                + "                            <li>Complejidad ciclomática por método</li>\n"
+                + "                        </ul>\n"
+                + "                    </td>\n"
+                + "                </tr>\n"
+                + "                <tr>\n"
+                + "                    <td>\n"
+                + "                        <p>Seleccione la ruta fuente de un proyecto Java</p>\n"
+                + "                        <br/>\n"
+                + "                <center><input type=\"file\" name=\"archUp\" accept=\".zip\"/></center>\n"
+                + "                <br/>\n"
+                + "                </td>\n"
+                + "                </tr>\n"
+                + "                <tr>\n"
+                + "                    <td>\n"
+                + "                <center> <input type=\"submit\" value=\"Analizar\"/></center>\n"
+                + "                </td>\n"
+                + "                </tr>\n"
+                + "            </table>\n"
+                + "        </form>              \n"
+                + "    </body>\n"
+                + "</html>";
+
+        return plantilla;
+    }
+
+    private String cargarPagina2Html(String resultado) {
+        String plantilla = "";
+
+        plantilla = "<html>\n"
+                + "    <head>\n"
+                + "        <title>TSPi MAKING SOLUTIONS</title>\n"
+                + "    </head>\n"
+                + "    <body bgcolor=\"#FBFBEF\">\n"
+                + "        <form action=\"VistaWeb\" method=\"post\">\n"
+                + "            <table border=\"1\" align=\"center\" bgcolor=\"#E0ECF8\" style=\"border: yellow 9px solid;\"> \n"
+                + "                <tr>\n"
+                + "                    <td>\n"
+                + "                        <h3>Making Solutions</h3>\n"
+                + "                    </td>\n"
+                + "                </tr>\n"
+                + "                <tr>\n"
+                + "                    <td>\n"
+                + "                        <p>Analizador de programas JAVA:</p>\n"
+                + "                        <p>Esta aplicación leera la ruta origen de un proyecto Java y lo analizara obteniendo el siguiente resultado</p>\n"
+                + "                    </td>\n"
+                + "                </tr>\n"
+                + "                <tr>\n"
+                + "                    <td>\n"
+                + "                        <ul>\n"
+                + "                            <li>Número de clases</li>\n"
+                + "                            <li>Número total de lineas del proyecto</li>\n"
+                + "                            <li>Complejidad ciclomatica</li>\n"
+                + "                            <li>Nombre de una clase</li>\n"
+                + "                            <li>LOC por clase</li>\n"
+                + "                            <li>Resúmen de métodos por clase</li>\n"
+                + "                            <li>Complejidad ciclomática por método</li>\n"
+                + "                        </ul>\n"
+                + "                    </td>\n"
+                + "                </tr>\n"
+                + "                <tr>\n"
+                + "                    <td>\n"
+                + "                        <p>Seleccione la ruta fuente de un proyecto Java</p>\n"
+                + "                        <br/>\n"
+                + "                <center><input type=\"file\" name=\"archUp\"/></center>\n"
+                + "                <br/>\n"
+                + "                </td>\n"
+                + "                </tr>\n"
+                + "                <tr>\n"
+                + "                    <td>\n"
+                + "                <center> <input type=\"submit\" value=\"Analizar\"/></center>\n"
+                + "                </td>\n"
+                + "                </tr>\n"
+                + "            </table>\n"
+                + "        </form>              \n"
+                + "    </body>\n"
+                + "</html>";
+
+        return plantilla;
     }
 
 }
