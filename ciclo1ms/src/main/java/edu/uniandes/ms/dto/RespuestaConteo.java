@@ -75,7 +75,7 @@ public class RespuestaConteo {
         
         return respuestaComplejidad;
     }
-
+     
     /**
      * Obtiene la lista de llamdos de los metodos
      * @return HashMap<String, Integer> Lista de llamados a los metodos

@@ -36,6 +36,11 @@ public class Clase {
     private int llamados;
     
     /**
+     * complejidad ciclomática del metodo
+     */    
+    private int complejidadMcCabe;
+    
+    /**
      * constructor de la clase
      * Inicializa la lista de metodos
      */
@@ -114,4 +119,20 @@ public class Clase {
     public void setLlamados(int llamados) {
         this.llamados = llamados;
     }
+    
+    /**
+     * obtiene la complejidad de McCabe que es una metrica que proporciona una medicion de complejidad logica de la clase.
+     * @return int complejidad de McCabe de la clase.
+     */
+    public int getComplejidadMcCabe() {
+        return this.complejidadMcCabe;
+    }
+    
+    /**
+     * metodo encargado de asignar la complejidad de McCabe obtenida.
+     * @param complejidadMcCabe valor a establecer.
+     */
+    public void setComplejidadMcCabe(int complejidadMcCabe){
+        this.complejidadMcCabe = complejidadMcCabe;
+    }    
 }

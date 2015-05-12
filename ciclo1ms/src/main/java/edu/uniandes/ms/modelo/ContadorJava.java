@@ -61,6 +61,7 @@ public class ContadorJava implements IContador {
                     clase.setCantidadLineasClase(clase.getCantidadLineasClase() + 1);
                     metodo.setCantidadLineasMetodo(metodo.getCantidadLineasMetodo() + 1);                    
                     metodo.setComplejidadMcCabe(metodo.getComplejidadMcCabe() + 1);
+                    clase.setComplejidadMcCabe(clase.getComplejidadMcCabe() + 1);
 
                 } else if (isCodeLine(s)) {
                     if (clase != null) {
@@ -69,6 +70,7 @@ public class ContadorJava implements IContador {
                     if (metodo != null) {
                         metodo.setCantidadLineasMetodo(metodo.getCantidadLineasMetodo() + 1);                        
                         metodo.setComplejidadMcCabe(metodo.getComplejidadMcCabe() + valueExpressionMcCabe(s));
+                        clase.setComplejidadMcCabe(clase.getComplejidadMcCabe() + valueExpressionMcCabe(s));
                     }
                 }
             }
@@ -135,23 +137,23 @@ public class ContadorJava implements IContador {
         String lineaCodigo = linea.replaceAll(" ","");
         Pattern pattern = Pattern.compile("^if\\(.*\\)\\{$");
         Matcher matcher = pattern.matcher(lineaCodigo);
-       /* if (matcher.matches()){
+        if (matcher.matches()){
             vExpressionMcCabe++;
             String[] numeroCondiciones = lineaCodigo.split("&&");
             vExpressionMcCabe = (numeroCondiciones.length - 1) + vExpressionMcCabe;
-            numeroCondiciones = lineaCodigo.split("||");
+            numeroCondiciones = lineaCodigo.split("\\|\\|");
             vExpressionMcCabe = (numeroCondiciones.length - 1) + vExpressionMcCabe;
-        }*/
+        }
         
-        /*pattern = Pattern.compile("^elseif\\(.*\\)\\{$");
+        pattern = Pattern.compile("^elseif\\(.*\\)\\{$");
         matcher = pattern.matcher(lineaCodigo);
         if (matcher.matches()){
             vExpressionMcCabe++;
             String[] numeroCondiciones = lineaCodigo.split("&&");
             vExpressionMcCabe = (numeroCondiciones.length - 1) + vExpressionMcCabe;
-            numeroCondiciones = lineaCodigo.split("||");
+            numeroCondiciones = lineaCodigo.split("\\|\\|");
             vExpressionMcCabe = (numeroCondiciones.length - 1) + vExpressionMcCabe;
-        } */       
+        }       
         
         pattern = Pattern.compile("^case.*:$");
         matcher = pattern.matcher(lineaCodigo);
