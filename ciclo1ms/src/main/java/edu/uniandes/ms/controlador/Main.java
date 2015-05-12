@@ -66,23 +66,10 @@ public class Main extends HttpServlet {
             File directorio = new File(archUp);
             String ruta = directorio.getAbsolutePath();
             VistaTexto vistaTexto = new VistaTexto();
-            String respuesta = vistaTexto.analizarDirectorioFuente(LenguajeEnum.JAVA);
-            out.print("<html>\n"
-                    + "<body>\n"
-                    + "<form>\n"
-                    + "ruta -> " + ruta + "<br/>"
-                    + respuesta + "\n"
-                    + "</form>\n"
-                    + "</body>\n"
-                    + "</html>");
+            String respuesta = vistaTexto.analizarDirectorioFuente(ruta, LenguajeEnum.JAVA);
+            out.print(cargarPagina2Html(respuesta));
         } else {
-            out.print("<html>\n"
-                    + "<body>\n"
-                    + "<form>\n"
-                    + "DEBE SELECCIONAR UN ARCHIVO .ZIP\n"
-                    + "</form>\n"
-                    + "</body>\n"
-                    + "</html>");
+            out.print(cargarPagina2Html("DEBE SELECCIONAR UN ARCHIVO PARA ANALIZAR."));
         }
 
     }
@@ -180,35 +167,15 @@ public class Main extends HttpServlet {
                 + "                </tr>\n"
                 + "                <tr>\n"
                 + "                    <td>\n"
-                + "                        <p>Analizador de programas JAVA:</p>\n"
-                + "                        <p>Esta aplicación leera la ruta origen de un proyecto Java y lo analizara obteniendo el siguiente resultado</p>\n"
+                + "                        <p>RESULTADO</p>                        \n"
                 + "                    </td>\n"
                 + "                </tr>\n"
                 + "                <tr>\n"
                 + "                    <td>\n"
-                + "                        <ul>\n"
-                + "                            <li>Número de clases</li>\n"
-                + "                            <li>Número total de lineas del proyecto</li>\n"
-                + "                            <li>Complejidad ciclomatica</li>\n"
-                + "                            <li>Nombre de una clase</li>\n"
-                + "                            <li>LOC por clase</li>\n"
-                + "                            <li>Resúmen de métodos por clase</li>\n"
-                + "                            <li>Complejidad ciclomática por método</li>\n"
-                + "                        </ul>\n"
+                + "<center>"
+                + "                        "+ resultado+"\n"
+                + "</center>"
                 + "                    </td>\n"
-                + "                </tr>\n"
-                + "                <tr>\n"
-                + "                    <td>\n"
-                + "                        <p>Seleccione la ruta fuente de un proyecto Java</p>\n"
-                + "                        <br/>\n"
-                + "                <center><input type=\"file\" name=\"archUp\"/></center>\n"
-                + "                <br/>\n"
-                + "                </td>\n"
-                + "                </tr>\n"
-                + "                <tr>\n"
-                + "                    <td>\n"
-                + "                <center> <input type=\"submit\" value=\"Analizar\"/></center>\n"
-                + "                </td>\n"
                 + "                </tr>\n"
                 + "            </table>\n"
                 + "        </form>              \n"

@@ -2,6 +2,7 @@ package edu.uniandes.ms.vista;
 
 import edu.uniandes.ms.dto.RespuestaAnalisis;
 import edu.uniandes.ms.modelo.LenguajeEnum;
+import java.io.File;
 
 /**
  * Interfaz que contiente las definiciones de un grupo de funciones relacionadas
@@ -19,7 +20,7 @@ public interface IVista {
      * @param lenguaje a analizar.
      * @return 
      */
-    public String analizarDirectorioFuente(LenguajeEnum lenguaje);
+    public String analizarDirectorioFuente(String rutas,LenguajeEnum lenguaje);
 
     /**
      * Define el método encargado de pintar la respuesta del análisis del código
