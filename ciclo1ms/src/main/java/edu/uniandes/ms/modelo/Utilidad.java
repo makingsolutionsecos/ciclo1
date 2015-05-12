@@ -19,10 +19,10 @@ public class Utilidad {
             return "Clase simple, sin mucho riesgo.";
         }
         else if(complejidadMcCabe >= 10 && complejidadMcCabe < 20){
-            return "Clase mediamente complejo, riesgo moderado.";
+            return "Clase mediamente compleja, riesgo moderado.";
         }            
         else if(complejidadMcCabe >= 20 && complejidadMcCabe < 50){
-            return "Clase complejo, alto riesgo.";
+            return "Clase compleja, alto riesgo.";
         }                    
         else
             return "Clase no testeable, riesgo muy alto.";

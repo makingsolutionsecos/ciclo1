@@ -134,54 +134,36 @@ public class ContadorJava implements IContador {
     
     private int valueExpressionMcCabe(String linea){
         int vExpressionMcCabe = 0;
-        String lineaCodigo = linea.replaceAll(" ","");
-        Pattern pattern = Pattern.compile("^if\\(.*\\)\\{$");
-        Matcher matcher = pattern.matcher(lineaCodigo);
-        if (matcher.matches()){
-            vExpressionMcCabe++;
-            String[] numeroCondiciones = lineaCodigo.split("&&");
-            vExpressionMcCabe = (numeroCondiciones.length - 1) + vExpressionMcCabe;
-            numeroCondiciones = lineaCodigo.split("\\|\\|");
-            vExpressionMcCabe = (numeroCondiciones.length - 1) + vExpressionMcCabe;
+                     
+        if (Pattern.compile("^if\\(.*\\)\\{$").matcher(linea.replaceAll(" ","")).matches()){
+            vExpressionMcCabe++;            
+            vExpressionMcCabe += (linea.replaceAll(" ","").split("&&").length - 1);            
+            vExpressionMcCabe += (linea.replaceAll(" ","").split("\\|\\|").length - 1);
         }
         
-        pattern = Pattern.compile("^elseif\\(.*\\)\\{$");
-        matcher = pattern.matcher(lineaCodigo);
-        if (matcher.matches()){
-            vExpressionMcCabe++;
-            String[] numeroCondiciones = lineaCodigo.split("&&");
-            vExpressionMcCabe = (numeroCondiciones.length - 1) + vExpressionMcCabe;
-            numeroCondiciones = lineaCodigo.split("\\|\\|");
-            vExpressionMcCabe = (numeroCondiciones.length - 1) + vExpressionMcCabe;
+        else if (Pattern.compile("^elseif\\(.*\\)\\{$").matcher(linea.replaceAll(" ","")).matches()){
+            vExpressionMcCabe++;            
+            vExpressionMcCabe += (linea.replaceAll(" ","").split("&&").length - 1);
+            vExpressionMcCabe += (linea.replaceAll(" ","").split("\\|\\|").length - 1);
         }       
         
-        pattern = Pattern.compile("^case.*:$");
-        matcher = pattern.matcher(lineaCodigo);
-        if (matcher.matches()) {
+        else if (Pattern.compile("^case.*:$").matcher(linea.replaceAll(" ","")).matches()){
+            vExpressionMcCabe++;
+        }
+                
+        else if (Pattern.compile("^for\\(.*\\)\\{$").matcher(linea.replaceAll(" ","")).matches()){
             vExpressionMcCabe++;
         }
         
-        pattern = Pattern.compile("^for\\(.*\\)\\{$"); 
-        matcher = pattern.matcher(lineaCodigo);
-        if (matcher.matches()) {
+        else if (Pattern.compile("^foreach\\(.*\\)\\{$").matcher(linea.replaceAll(" ","")).matches()){
             vExpressionMcCabe++;
         }
         
-        pattern = Pattern.compile("^foreach\\(.*\\)\\{$"); 
-        matcher = pattern.matcher(lineaCodigo);
-        if (matcher.matches()) {
+        else if (Pattern.compile("^while\\(.*\\)\\{$").matcher(linea.replaceAll(" ","")).matches()){
             vExpressionMcCabe++;
         }
         
-        pattern = Pattern.compile("^while\\(.*\\)\\{$"); 
-        matcher = pattern.matcher(lineaCodigo);
-        if (matcher.matches()) {
-            vExpressionMcCabe++;
-        }
-        
-        pattern = Pattern.compile("^\\}catch\\(.*\\)\\{$"); 
-        matcher = pattern.matcher(lineaCodigo);
-        if (matcher.matches()) {
+        else if (Pattern.compile("^\\}catch\\(.*\\)\\{$").matcher(linea.replaceAll(" ","")).matches()){
             vExpressionMcCabe++;
         }
                
