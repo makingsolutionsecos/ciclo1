@@ -21,7 +21,7 @@ import org.eclipse.jetty.servlet.ServletHolder;
  * and open the template in the editor.
  */
 /**
- * Clase principal
+ * Clase principal que inicia la aplicación.
  *
  * @author Angela Edith Suárez Torres
  * @version 1.0 fecha 04/04/15
@@ -35,8 +35,8 @@ public class Main extends HttpServlet {
      */
     public static void main(String[] args) {
         try {
-//          Server server = new Server(Integer.valueOf(System.getenv("PORT")));
-            Server server = new Server(Integer.valueOf("8082"));
+            //Server server = new Server(Integer.valueOf(System.getenv("PORT")));
+            Server server = new Server(Integer.valueOf("8083"));
             ServletContextHandler context = new ServletContextHandler(ServletContextHandler.SESSIONS);
             context.setContextPath("/");
             server.setHandler(context);
@@ -49,13 +49,14 @@ public class Main extends HttpServlet {
     }
 
     /**
-     * Metodo post que se ejecuta cuando hay un submit obtiene los valores
-     * digitados en pantalla
+     * Método post que se ejecuta cuando hay un submit obtiene los valores
+     * digitados en pantalla.
      *
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
+     * @param req Solicitud http.
+     * @param resp Respuesta de la solitud.
+     * @throws ServletException lanzada cuando falle el Servet.
+     * @throws IOException lanzada cuando se presente un error relacionado con
+     * la entrada y salida.
      */
     @Override
     public void doPost(HttpServletRequest req, HttpServletResponse resp)
@@ -69,32 +70,45 @@ public class Main extends HttpServlet {
             String respuesta = vistaTexto.analizarDirectorioFuente(ruta, LenguajeEnum.JAVA);
             out.print(cargarPagina2Html(respuesta));
         } else {
-            out.print(cargarPagina2Html("DEBE SELECCIONAR UN ARCHIVO PARA ANALIZAR."));
+            out.print(cargarPagina2Html("Debe seleccionar un archivo comprimido (.zip) para analizar."));
         }
-
     }
 
     /**
-     * Metodo que carga la pantalla en html
+     * Método que carga la pantalla en html.
      *
-     * @param req
-     * @param resp
-     * @throws ServletException
-     * @throws IOException
+     * @param req Solicitud http.
+     * @param resp Respuesta de la solitud.
+     * @throws ServletException lanzada cuando falle el Servet.
+     * @throws IOException lanzada cuando se presente un error relacionado con
+     * la entrada y salida.
      */
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
         PrintWriter out = resp.getWriter();
         out.print(cargarPaginaHtml());
-
     }
 
+    /**
+     * Método que carga la pantalla de inicio.
+     *
+     * @param req Solicitud http.
+     * @param resp Respuesta de la solitud.
+     * @throws ServletException lanzada cuando falle el Servet.
+     * @throws IOException lanzada cuando se presente un error relacionado con
+     * la entrada y salida.
+     */
     private void showHome(HttpServletRequest req, HttpServletResponse resp)
             throws ServletException, IOException {
 
     }
 
+    /**
+     * Método que crea la pantalla inicial.
+     *
+     * @return una cadena con el formato html de la página.
+     */
     private String cargarPaginaHtml() {
         String plantilla = "";
 
@@ -113,15 +127,15 @@ public class Main extends HttpServlet {
                 + "                <tr>\n"
                 + "                    <td>\n"
                 + "                        <p>Analizador de programas JAVA:</p>\n"
-                + "                        <p>Esta aplicación leera la ruta origen de un proyecto Java y lo analizara obteniendo el siguiente resultado</p>\n"
+                + "                        <p>Esta aplicación leerá la ruta origen de un proyecto Java y lo analizará obteniendo el siguiente resultado</p>\n"
                 + "                    </td>\n"
                 + "                </tr>\n"
                 + "                <tr>\n"
                 + "                    <td>\n"
                 + "                        <ul>\n"
                 + "                            <li>Número de clases</li>\n"
-                + "                            <li>Número total de lineas del proyecto</li>\n"
-                + "                            <li>Complejidad ciclomatica</li>\n"
+                + "                            <li>Número total de líneas del proyecto</li>\n"
+                + "                            <li>Complejidad ciclomática</li>\n"
                 + "                            <li>Nombre de una clase</li>\n"
                 + "                            <li>LOC por clase</li>\n"
                 + "                            <li>Resúmen de métodos por clase</li>\n"
@@ -150,6 +164,12 @@ public class Main extends HttpServlet {
         return plantilla;
     }
 
+    /**
+     * Método para crear la página de resultado.
+     *
+     * @param resultado cadena con texto con formato html.
+     * @return
+     */
     private String cargarPagina2Html(String resultado) {
         String plantilla = "";
 
@@ -173,7 +193,7 @@ public class Main extends HttpServlet {
                 + "                <tr>\n"
                 + "                    <td>\n"
                 + "<center>"
-                + "                        "+ resultado+"\n"
+                + "                        " + resultado + "\n"
                 + "</center>"
                 + "                    </td>\n"
                 + "                </tr>\n"

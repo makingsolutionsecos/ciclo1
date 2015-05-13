@@ -2,12 +2,12 @@ package edu.uniandes.ms.dto;
 
 /**
  * Clase DTO que contiene la estructura de la respuesta de análisis
+ *
  * @author Camilo Marroquin
- * @version 1.0
- * Fecha 02/04/2015
+ * @version 1.0 Fecha 02/04/2015
  */
 public class RespuestaAnalisis {
-    
+
     /**
      * Resultado del conteo
      */
@@ -20,7 +20,8 @@ public class RespuestaAnalisis {
 
     /**
      * Obtiene el nombre del Proyecto
-     * @return String Nombre del Proyecto 
+     *
+     * @return String Nombre del Proyecto
      */
     public String getNombreProyecto() {
         return nombreProyecto;
@@ -28,15 +29,17 @@ public class RespuestaAnalisis {
 
     /**
      * Establecer el nombre de Proyecto
-     * @param nombreProyecto 
+     *
+     * @param nombreProyecto
      */
     public void setNombreProyecto(String nombreProyecto) {
         this.nombreProyecto = nombreProyecto;
     }
-    
+
     /**
      * Obtiene la respuesta de conteo
-     * @return 
+     *
+     * @return
      */
     public RespuestaConteo getRespuestaConteo() {
         return respuestaConteo;
@@ -44,19 +47,17 @@ public class RespuestaAnalisis {
 
     /**
      * Establecer la respuesta del conteo
-     * @param respuestaConteo 
+     *
+     * @param respuestaConteo
      */
     public void setRespuestaConteo(RespuestaConteo respuestaConteo) {
         this.respuestaConteo = respuestaConteo;
     }
 
     /**
-     * Constructor de la clase
-     * Inicializa la respuesta del conteo
+     * Constructor de la clase Inicializa la respuesta del conteo
      */
     public RespuestaAnalisis() {
         this.respuestaConteo = new RespuestaConteo();
     }
 }
-
-

@@ -6,32 +6,32 @@ import java.util.List;
 
 /**
  * Clase DTO que contiene la estructura de la respuesta de conteo
+ *
  * @author Camilo Marroquin
- * @version 1.0
- * Fecha 02/04/2015
+ * @version 1.0 Fecha 02/04/2015
  */
 public class RespuestaConteo {
-    
+
     /**
      * Lista de clases encontradas
      */
     private List<Clase> listaClases;
-    
+
     /**
      * Lista de Metodos en todo el proyecto
      */
     HashMap<String, Integer> llamadoMetodos;
 
     /**
-     * Constructor de la clase
-     * Inicializa la lista de clases
+     * Constructor de la clase Inicializa la lista de clases
      */
     public RespuestaConteo() {
         this.listaClases = new ArrayList<Clase>();
     }
-    
+
     /**
      * Obtetine la lista de clases del proyecto
+     *
      * @return List<Clase> Lista de clases del proyecto
      */
     public List<Clase> getListaClases() {
@@ -40,24 +40,24 @@ public class RespuestaConteo {
 
     /**
      * Establece la lista de clases del proyecto
-     * @param listaClases Lista de clases a agregar 
+     *
+     * @param listaClases Lista de clases a agregar
      */
     public void setListaClases(List<Clase> listaClases) {
         this.listaClases = listaClases;
     }
-    
-    public int getCantidadLineasTotal(){
+
+    public int getCantidadLineasTotal() {
         int cantidadLineasTotal = 0;
-        for (Clase clase : this.listaClases) { 
+        for (Clase clase : this.listaClases) {
             cantidadLineasTotal += clase.getCantidadLineasClase();
         }
         return cantidadLineasTotal;
     }
-    
- 
-    
+
     /**
      * Obtiene la lista de llamdos de los metodos
+     *
      * @return HashMap<String, Integer> Lista de llamados a los metodos
      */
     public HashMap<String, Integer> getLlamadoMetodos() {
@@ -66,7 +66,8 @@ public class RespuestaConteo {
 
     /**
      * Establece la lista de llamados de metodos
-     * @param llamadoMetodos 
+     *
+     * @param llamadoMetodos
      */
     public void setLlamadoMetodos(HashMap<String, Integer> llamadoMetodos) {
         this.llamadoMetodos = llamadoMetodos;
@@ -74,10 +75,10 @@ public class RespuestaConteo {
 
     /**
      * Obtiene el numero de clases del proyecto
-     * @return 
+     *
+     * @return el número de clases.
      */
-    public int getNumeroClases(){
+    public int getNumeroClases() {
         return this.listaClases.size();
     }
 }
-

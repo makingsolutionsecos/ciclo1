@@ -22,7 +22,7 @@ public class Controlador {
      * Método que permite analizar código fuente.
      * @param ruta del folder donde se encuentra alojado el código fuente.
      * @param lenguaje en el que esta escrito el código.
-     * @return 
+     * @return un objeto de tipo RespuestaAnalisis.
      */
     public RespuestaAnalisis analizarDirectorioFuente(String ruta, LenguajeEnum lenguaje) {
         Analizador analizador = new Analizador();

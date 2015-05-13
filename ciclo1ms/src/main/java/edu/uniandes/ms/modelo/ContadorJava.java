@@ -11,7 +11,6 @@ import java.io.IOException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /*
@@ -21,16 +20,18 @@ import java.util.regex.Pattern;
  */
 /**
  * Clase que contiene los métodos que implementan la lógica de conteo
+ *
  * @author Angela Edith Suárez Torres
- * @version 1.0
- * fecha 04/04/15
+ * @version 1.0 fecha 04/04/15
  */
 public class ContadorJava implements IContador {
 
     /**
-     * Recibe un archivo como parámetro para conteo y recibe respuesta que será actualizada por referencia
+     * Recibe un archivo como parámetro para conteo y recibe respuesta que será
+     * actualizada por referencia
+     *
      * @param archivo
-     * @param respuestaConteo 
+     * @param respuestaConteo
      */
     @Override
     public void ejecutarConteo(File archivo, RespuestaConteo respuestaConteo) {
@@ -59,7 +60,7 @@ public class ContadorJava implements IContador {
                     metodo = new Metodo();
                     metodo.setNombre(getNombreMetodo(s.trim()));
                     clase.setCantidadLineasClase(clase.getCantidadLineasClase() + 1);
-                    metodo.setCantidadLineasMetodo(metodo.getCantidadLineasMetodo() + 1);                    
+                    metodo.setCantidadLineasMetodo(metodo.getCantidadLineasMetodo() + 1);
                     metodo.setComplejidadMcCabe(metodo.getComplejidadMcCabe() + 1);
                     clase.setComplejidadMcCabe(clase.getComplejidadMcCabe() + 1);
 
@@ -68,7 +69,7 @@ public class ContadorJava implements IContador {
                         clase.setCantidadLineasClase(clase.getCantidadLineasClase() + 1);
                     }
                     if (metodo != null) {
-                        metodo.setCantidadLineasMetodo(metodo.getCantidadLineasMetodo() + 1);                        
+                        metodo.setCantidadLineasMetodo(metodo.getCantidadLineasMetodo() + 1);
                         metodo.setComplejidadMcCabe(metodo.getComplejidadMcCabe() + valueExpressionMcCabe(s));
                         clase.setComplejidadMcCabe(clase.getComplejidadMcCabe() + valueExpressionMcCabe(s));
                     }
@@ -92,27 +93,33 @@ public class ContadorJava implements IContador {
         }
 
     }
+
     /**
-     * Evalua si la línea de código analizada corresponde a la
-     * declaración de una clase
+     * Evalua si la línea de código analizada corresponde a la declaración de
+     * una clase
+     *
      * @param input
      * @return resultado de evaluación
      */
     public boolean isClassLine(String input) {
         return input.trim().matches("public (class |enum |interface ){1}.*");
     }
+
     /**
-     * Evalua si la línea de código analizada corresponde a la
-     * declaración de un método
+     * Evalua si la línea de código analizada corresponde a la declaración de un
+     * método
+     *
      * @param input
      * @return resultado de evaluación
      */
     public boolean isMethodLine(String input) {
         return input.trim().matches("(public |private |protected ){1}.*(\\().*");
     }
+
     /**
-     * Evalua si la línea de código analizada no corresponde a la
-     * declaración de un método o una clase
+     * Evalua si la línea de código analizada no corresponde a la declaración de
+     * un método o una clase
+     *
      * @param input
      * @return resultado de evaluación
      */
@@ -122,53 +129,46 @@ public class ContadorJava implements IContador {
 
     /**
      * Obtiene el nombre del método analizado
+     *
      * @param linea
-     * @return String con nombre del método 
+     * @return String con nombre del método
      */
-    public String getNombreMetodo(String linea){
+    public String getNombreMetodo(String linea) {
         int indexParentesis = linea.indexOf("(");
         linea = linea.substring(0, indexParentesis);
-        linea = linea.substring(linea.lastIndexOf(" ")+1, linea.length());
+        linea = linea.substring(linea.lastIndexOf(" ") + 1, linea.length());
         return linea;
     }
-    
-    private int valueExpressionMcCabe(String linea){
+
+    /**
+     * Método que valida que la línea cumpla con una expresión de MC Cabe.
+     *
+     * @param linea
+     * @return la complejidad de MC Cabe.
+     */
+    private int valueExpressionMcCabe(String linea) {
         int vExpressionMcCabe = 0;
-                     
-        if (Pattern.compile("^if\\(.*\\)\\{$").matcher(linea.replaceAll(" ","")).matches()){
-            vExpressionMcCabe++;            
-            vExpressionMcCabe += (linea.replaceAll(" ","").split("&&").length - 1);            
-            vExpressionMcCabe += (linea.replaceAll(" ","").split("\\|\\|").length - 1);
-        }
-        
-        else if (Pattern.compile("^elseif\\(.*\\)\\{$").matcher(linea.replaceAll(" ","")).matches()){
-            vExpressionMcCabe++;            
-            vExpressionMcCabe += (linea.replaceAll(" ","").split("&&").length - 1);
-            vExpressionMcCabe += (linea.replaceAll(" ","").split("\\|\\|").length - 1);
-        }       
-        
-        else if (Pattern.compile("^case.*:$").matcher(linea.replaceAll(" ","")).matches()){
+
+        if (Pattern.compile("^if\\(.*\\)\\{$").matcher(linea.replaceAll(" ", "")).matches()) {
+            vExpressionMcCabe++;
+            vExpressionMcCabe += (linea.replaceAll(" ", "").split("&&").length - 1);
+            vExpressionMcCabe += (linea.replaceAll(" ", "").split("\\|\\|").length - 1);
+        } else if (Pattern.compile("^elseif\\(.*\\)\\{$").matcher(linea.replaceAll(" ", "")).matches()) {
+            vExpressionMcCabe++;
+            vExpressionMcCabe += (linea.replaceAll(" ", "").split("&&").length - 1);
+            vExpressionMcCabe += (linea.replaceAll(" ", "").split("\\|\\|").length - 1);
+        } else if (Pattern.compile("^case.*:$").matcher(linea.replaceAll(" ", "")).matches()) {
+            vExpressionMcCabe++;
+        } else if (Pattern.compile("^for\\(.*\\)\\{$").matcher(linea.replaceAll(" ", "")).matches()) {
+            vExpressionMcCabe++;
+        } else if (Pattern.compile("^foreach\\(.*\\)\\{$").matcher(linea.replaceAll(" ", "")).matches()) {
+            vExpressionMcCabe++;
+        } else if (Pattern.compile("^while\\(.*\\)\\{$").matcher(linea.replaceAll(" ", "")).matches()) {
+            vExpressionMcCabe++;
+        } else if (Pattern.compile("^\\}catch\\(.*\\)\\{$").matcher(linea.replaceAll(" ", "")).matches()) {
             vExpressionMcCabe++;
         }
-                
-        else if (Pattern.compile("^for\\(.*\\)\\{$").matcher(linea.replaceAll(" ","")).matches()){
-            vExpressionMcCabe++;
-        }
-        
-        else if (Pattern.compile("^foreach\\(.*\\)\\{$").matcher(linea.replaceAll(" ","")).matches()){
-            vExpressionMcCabe++;
-        }
-        
-        else if (Pattern.compile("^while\\(.*\\)\\{$").matcher(linea.replaceAll(" ","")).matches()){
-            vExpressionMcCabe++;
-        }
-        
-        else if (Pattern.compile("^\\}catch\\(.*\\)\\{$").matcher(linea.replaceAll(" ","")).matches()){
-            vExpressionMcCabe++;
-        }
-               
+
         return vExpressionMcCabe;
     }
-    
-    
 }

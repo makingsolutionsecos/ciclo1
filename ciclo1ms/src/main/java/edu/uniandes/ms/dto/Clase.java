@@ -1,21 +1,19 @@
-
 package edu.uniandes.ms.dto;
 
 import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Clase DTO que contiene la estructura de un archivo clase
- * y contendra el nombre, cantidad de lineas e información de los metodos de la clase
+ * Clase DTO que contiene la estructura de un archivo clase y contendra el
+ * nombre, cantidad de lineas e información de los metodos de la clase
+ *
  * @author sergio Forero
- * @version 1.0
- * Fecha 03/04/2015
+ * @version 1.0 Fecha 03/04/2015
  */
 public class Clase {
 
     /**
-     * contendra una lista de metodos que se encuentran en
-     * una clase
+     * contendra una lista de metodos que se encuentran en una clase
      */
     private List<Metodo> listaMetodos;
 
@@ -30,26 +28,25 @@ public class Clase {
     private int cantidadLineasClase;
 
     /**
-     * numero de veces que la clase es llamada 
-     * dentro del proyecto
+     * numero de veces que la clase es llamada dentro del proyecto
      */
     private int llamados;
-    
+
     /**
      * complejidad ciclomática del metodo
-     */    
+     */
     private int complejidadMcCabe;
-    
+
     /**
-     * constructor de la clase
-     * Inicializa la lista de metodos
+     * constructor de la clase Inicializa la lista de metodos
      */
     public Clase() {
         this.listaMetodos = new ArrayList<Metodo>();
     }
-    
+
     /**
      * metodo que agrega metodos a la lista de metodos de la clase
+     *
      * @param metodo metodo para agregar a la lista de metodos
      */
     public void addMetodo(Metodo metodo) {
@@ -58,6 +55,7 @@ public class Clase {
 
     /**
      * obtiene la lista de metodos
+     *
      * @return List<Metodo> lista de metodos de la clase
      */
     public List<Metodo> getListaMetodos() {
@@ -66,6 +64,7 @@ public class Clase {
 
     /**
      * metodo encargado de establecer la variable de lista de metodos
+     *
      * @param listaMetodos valor para establecer la variable lista de metodos
      */
     public void setListaMetodos(List<Metodo> listaMetodos) {
@@ -74,6 +73,7 @@ public class Clase {
 
     /**
      * obtiene el nombre de la case
+     *
      * @return String nombre de la clase
      */
     public String getNombre() {
@@ -82,6 +82,7 @@ public class Clase {
 
     /**
      * metodo encargado de establecer el nombre de la case
+     *
      * @param nombre nombre de la clase a establecer
      */
     public void setNombre(String nombre) {
@@ -90,6 +91,7 @@ public class Clase {
 
     /**
      * obtiene el numero de lineas de la clase
+     *
      * @return int numero lineas de la clase
      */
     public int getCantidadLineasClase() {
@@ -98,6 +100,7 @@ public class Clase {
 
     /**
      * metodo encargado de establecer el numero de lineas de la clase
+     *
      * @param cantidadLineasClase numero de lineas a establecer
      */
     public void setCantidadLineasClase(int cantidadLineasClase) {
@@ -106,6 +109,7 @@ public class Clase {
 
     /**
      * obtiene el numero de veces que la clase es llamada en el proyecto
+     *
      * @return int numero de llamados de esta clase
      */
     public int getLlamados() {
@@ -114,25 +118,29 @@ public class Clase {
 
     /**
      * metodo encargado de establecer el numero de llamados de la clase
+     *
      * @param llamados numero de llamados de la clase
      */
     public void setLlamados(int llamados) {
         this.llamados = llamados;
     }
-    
+
     /**
-     * obtiene la complejidad de McCabe que es una metrica que proporciona una medicion de complejidad logica de la clase.
+     * obtiene la complejidad de McCabe que es una metrica que proporciona una
+     * medicion de complejidad logica de la clase.
+     *
      * @return int complejidad de McCabe de la clase.
      */
     public int getComplejidadMcCabe() {
         return this.complejidadMcCabe;
     }
-    
+
     /**
      * metodo encargado de asignar la complejidad de McCabe obtenida.
+     *
      * @param complejidadMcCabe valor a establecer.
      */
-    public void setComplejidadMcCabe(int complejidadMcCabe){
+    public void setComplejidadMcCabe(int complejidadMcCabe) {
         this.complejidadMcCabe = complejidadMcCabe;
-    }    
+    }
 }
